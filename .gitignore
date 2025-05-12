@@ -1,3 +1,11 @@
+# Missing from OpenXAI
+data/
+pretrained/
+
+# Added specifically for AXE
+EXPLANATIONS/
+EVALUATIONS/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
