@@ -13,8 +13,7 @@ class RandomBaseline(Explainer):
         Args:
             model (torch.nn.Module): model on which to make predictions
         """
-
-        super(RandomBaseline, self).__init__(model)
+        super().__init__(model)
 
     def get_explanation(self, x: torch.Tensor, label: torch.Tensor) -> torch.tensor:
         """

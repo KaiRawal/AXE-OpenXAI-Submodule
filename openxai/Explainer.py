@@ -20,15 +20,16 @@ def Explainer(method: str,
               param_dict_ig=None,
               param_dict_lime=None,
               param_dict_shap=None):
-    
-    if method == 'grad':
+    method = method.lower()
+
+    if method == 'grad' or method == 'vnlagrad':
         if param_dict_grad is None:
             param_dict_grad = dict()
             param_dict_grad['absolute_value'] = True
         explainer = Gradient(model,
                              absolute_value=param_dict_grad['absolute_value'])
     
-    elif method == 'sg':
+    elif method == 'sg' or method == 'smthgrad':
         if param_dict_sg is None:
             param_dict_sg = dict()
             param_dict_sg['n_samples'] = 100
@@ -37,10 +38,10 @@ def Explainer(method: str,
                                num_samples=param_dict_sg['n_samples'],
                                standard_deviation=param_dict_sg['standard_deviation'])
     
-    elif method == 'itg':
+    elif method == 'itg' or method == 'inputimegrad':
         explainer = InputTimesGradient(model)
     
-    elif method == 'ig':
+    elif method == 'ig' or method == 'integrad':
         if param_dict_ig is None:
             param_dict_ig = dict()
             param_dict_ig['method'] = 'gausslegendre'
@@ -79,9 +80,9 @@ def Explainer(method: str,
                          n_samples=param_dict_lime['n_samples'],
                          discretize_continuous=param_dict_lime['discretize_continuous'])
 
-    elif method == 'control':
+    elif method == 'control' or method == 'random':
         explainer = RandomBaseline(model)
-    
+
     else:
         raise NotImplementedError("This method has not been implemented, yet.")
     
