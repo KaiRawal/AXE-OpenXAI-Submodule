@@ -42,7 +42,7 @@ loader_train, loader_test = return_loaders(data_name=data_name,
                                            download=True,
                                            batch_size=data_loader_batch_size)
 data_iter = iter(loader_test)
-inputs, labels = data_iter.next()
+inputs, labels = next(data_iter)
 labels = labels.type(torch.int64)
 
 # get full training data set
