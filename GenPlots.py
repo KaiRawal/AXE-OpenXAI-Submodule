@@ -7,7 +7,9 @@ from scipy.stats import spearmanr
 import torch
 import os
 from sklearn.preprocessing import StandardScaler
-
+import matplotlib
+matplotlib.rcParams['pdf.fonttype'] = 42
+matplotlib.rcParams['ps.fonttype'] = 42
 import warnings
 warnings.filterwarnings('ignore', category=UserWarning)
 warnings.filterwarnings('ignore', category=FutureWarning)
